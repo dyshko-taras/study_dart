@@ -5,16 +5,16 @@ class HelloWorld {
   String hello() => 'Hello, World!';
 }
 
-//#2
+//#2 Two Fer
 String twoFer([String name = 'you']) => 'One for $name, one for me.';
 
-//#3
+//#3 Leap
 class Leap {
   bool leapYear(int year) =>
       (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
 }
 
-//#4
+//#4 Scrabble Score
 int score(String word) {
   var score = 0;
   for (String letter in word.toLowerCase().split('')) {
@@ -64,7 +64,7 @@ int score(String word) {
   return score;
 }
 
-//#5
+//#5 Atbash Cipher
 class AtbashCipher {
   String encode(String text) {
     AsciiCodec asciiCodec = AsciiCodec();
@@ -95,5 +95,28 @@ class AtbashCipher {
       }
     }).toList();
     return asciiCodec.decode(resultCode);
+  }
+}
+
+//#6 Eliud's Eggs
+class EggCounter {
+  int count(int number) => number.toRadixString(2).replaceAll('0', '').length;
+}
+
+//#7 ETL
+class Etl {
+  Map<String, int> transform(Map<String, List<String>> legacy) {
+    final Map<String, int> result = {};
+
+    int points = 0;
+
+    for (String key in legacy.keys) {
+      points = int.parse(key);
+      for (String value in legacy[key]!) {
+        result.addAll({value.toLowerCase(): points});
+      }
+    }
+
+    return result;
   }
 }

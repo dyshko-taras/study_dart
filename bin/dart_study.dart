@@ -1,23 +1,36 @@
-import 'dart:convert';
+import 'dart:math';
 
-void main() {
-  String text = 'Testing,1 2 3, testing.';
-  String text2 = text.replaceAll(RegExp(r'[ .,]'), '');
-  print(text2);
-  AsciiCodec asciiCodec = AsciiCodec();
-  List<int> resultCode = AsciiCodec()
-      .encode(text.toLowerCase().split(RegExp(r'[ ,.]')).join(''))
-      .map((number) {
-    if (number >= 97 && number <= 122) {
-      return 122 - number + 97;
-    } else {
-      return number;
+void main() {}
+
+class Dog {
+  String name;
+  int age;
+
+  static Dog? _instance;
+
+  Dog._internal(this.name, this.age);
+
+  factory Dog(String name, int age) {
+    if (_instance == null) {
+      _instance = Dog._internal(name, age);
     }
-  }).toList();
-  // return asciiCodec.decode(resultCode);
-  print(RegExp(r'.{1,5}')
-      .allMatches(asciiCodec.decode(resultCode))
-      .map((match) => match.group(0))
-      .toList()
-      .join(' '));
+    return _instance!;
+  }
+}
+
+class Point {
+  final int x;
+  final int y;
+  final double distanceToOrigin;
+
+  Point(int x, int y)
+      : x = x,
+        y = y,
+        distanceToOrigin = _calculateDistance(x, y) {
+    print('Point constructor body executed.');
+  }
+
+  static double _calculateDistance(int x, int y) {
+    return sqrt(x * x + y * y);
+  }
 }
