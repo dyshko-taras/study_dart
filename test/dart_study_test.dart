@@ -2,81 +2,53 @@ import 'package:dart_study/exercism_exercises.dart';
 import 'package:test/test.dart';
 
 void main() {
-  final etl = Etl();
-  group('ETL', () {
-    test('Single letter', () {
-      final legacy = {
-        '1': ['A']
-      };
-      final result = etl.transform(legacy);
-      final expected = {'a': 1};
-      expect(result, equals(expected));
-    }, skip: false);
-    test('Single score with multiple letters', () {
-      final legacy = {
-        '1': ["A", "E", "I", "O", "U"]
-      };
-      final result = etl.transform(legacy);
-      final expected = {"a": 1, "e": 1, "i": 1, "o": 1, "u": 1};
-      expect(result, equals(expected));
-    }, skip: true);
-    test('Single score with multiple letters', () {
-      final legacy = {
-        '1': ["A", "E", "I", "O", "U"]
-      };
-      final result = etl.transform(legacy);
-      final expected = {"a": 1, "e": 1, "i": 1, "o": 1, "u": 1};
-      expect(result, equals(expected));
-    }, skip: true);
-    test('Multiple scores with multiple letters', () {
-      final legacy = {
-        "1": ["A", "E"],
-        "2": ["D", "G"]
-      };
-      final result = etl.transform(legacy);
-      final expected = {"a": 1, "d": 2, "e": 1, "g": 2};
-      expect(result, equals(expected));
-    }, skip: true);
-    test('Multiple scores with differing numbers of letter', () {
-      final legacy = {
-        "1": ["A", "E", "I", "O", "U", "L", "N", "R", "S", "T"],
-        "2": ["D", "G"],
-        "3": ["B", "C", "M", "P"],
-        "4": ["F", "H", "V", "W", "Y"],
-        "5": ["K"],
-        "8": ["J", "X"],
-        "10": ["Q", "Z"]
-      };
-      final result = etl.transform(legacy);
-      final expected = {
-        "a": 1,
-        "b": 3,
-        "c": 3,
-        "d": 2,
-        "e": 1,
-        "f": 4,
-        "g": 2,
-        "h": 4,
-        "i": 1,
-        "j": 8,
-        "k": 5,
-        "l": 1,
-        "m": 3,
-        "n": 1,
-        "o": 1,
-        "p": 3,
-        "q": 10,
-        "r": 1,
-        "s": 1,
-        "t": 1,
-        "u": 1,
-        "v": 4,
-        "w": 4,
-        "x": 8,
-        "y": 4,
-        "z": 10
-      };
-      expect(result, equals(expected));
-    }, skip: true);
+  final armstrongNumbers = ArmstrongNumbers();
+  group('ArmstrongNumbers', () {
+    test('Zero is an Armstrong number', () {
+      final result = armstrongNumbers.isArmstrongNumber('0');
+      expect(result, equals(true));
+    });
+    test('Single-digit numbers are Armstrong numbers', () {
+      final result = armstrongNumbers.isArmstrongNumber('5');
+      expect(result, equals(true));
+    });
+    test('There are no two-digit Armstrong numbers', () {
+      final result = armstrongNumbers.isArmstrongNumber('10');
+      expect(result, equals(false));
+    });
+    test('Three-digit number that is an Armstrong number', () {
+      final result = armstrongNumbers.isArmstrongNumber('153');
+      expect(result, equals(true));
+    });
+    test('Three-digit number that is not an Armstrong number', () {
+      final result = armstrongNumbers.isArmstrongNumber('100');
+      expect(result, equals(false));
+    });
+    test('Four-digit number that is an Armstrong number', () {
+      final result = armstrongNumbers.isArmstrongNumber('9474');
+      expect(result, equals(true));
+    });
+    test('Four-digit number that is not an Armstrong number', () {
+      final result = armstrongNumbers.isArmstrongNumber('9475');
+      expect(result, equals(false));
+    });
+    test('Seven-digit number that is an Armstrong number', () {
+      final result = armstrongNumbers.isArmstrongNumber('9926315');
+      expect(result, equals(true));
+    });
+    test('Seven-digit number that is not an Armstrong number', () {
+      final result = armstrongNumbers.isArmstrongNumber('9926314');
+      expect(result, equals(false));
+    });
+    test('Armstrong number containing seven zeroes', () {
+      final result = armstrongNumbers
+          .isArmstrongNumber('186709961001538790100634132976990');
+      expect(result, equals(true));
+    });
+    test('The largest and last Armstrong number', () {
+      final result = armstrongNumbers
+          .isArmstrongNumber('115132219018763992565095597973971522401');
+      expect(result, equals(true));
+    });
   });
 }

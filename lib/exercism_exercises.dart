@@ -1,5 +1,8 @@
 //#1 Hello World
 import 'dart:convert';
+import 'dart:developer' show log;
+import 'dart:math' hide log;
+import 'dart:math' as math;
 
 class HelloWorld {
   String hello() => 'Hello, World!';
@@ -67,8 +70,8 @@ int score(String word) {
 //#5 Atbash Cipher
 class AtbashCipher {
   String encode(String text) {
-    AsciiCodec asciiCodec = AsciiCodec();
-    List<int> resultCode = AsciiCodec()
+    AsciiCodec asciiCodec = const AsciiCodec();
+    List<int> resultCode = const AsciiCodec()
         .encode(text.toLowerCase().replaceAll(RegExp(r'[ .,]'), ''))
         .map((number) {
       if (number >= 97 && number <= 122) {
@@ -85,9 +88,9 @@ class AtbashCipher {
   }
 
   String decode(String text) {
-    AsciiCodec asciiCodec = AsciiCodec();
+    AsciiCodec asciiCodec = const AsciiCodec();
     List<int> resultCode =
-        AsciiCodec().encode(text.replaceAll(' ', '')).map((number) {
+        const AsciiCodec().encode(text.replaceAll(' ', '')).map((number) {
       if (number >= 97 && number <= 122) {
         return 122 - number + 97;
       } else {
@@ -118,5 +121,21 @@ class Etl {
     }
 
     return result;
+  }
+}
+
+//#8 Armstrong Numbers
+class ArmstrongNumbers {
+bool isArmstrongNumber(String number) {
+    final digits = number.split('');
+    final length = digits.length;
+    BigInt sum = BigInt.zero;
+
+    for (var d in digits) {
+      final value = BigInt.from(int.parse(d));
+      sum += value.pow(length);
+    }
+
+    return sum.toString() == number;
   }
 }
