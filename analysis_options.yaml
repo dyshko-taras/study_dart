@@ -1,43 +1,196 @@
-include: package:lints/recommended.yaml
+include: package:flutter_lints/flutter.yaml
+
+analyzer:
+  # Exclude generated and third-party files
+  exclude:
+    - "**/*.g.dart"
+    - "**/*.freezed.dart"
+    - "**/*.gr.dart"
+    - "**/*.config.dart"
+    - "**/generated_plugin_registrant.dart"
+    - "lib/generated/**"
+
+  # Enable additional analysis options
+  language:
+    strict-casts: true
+    strict-inference: true
+    strict-raw-types: true
 
 linter:
-
   rules:
-    # General rules
-    - avoid_print # Avoid using print statements; prefer a proper logger.
-    - prefer_single_quotes # Use single quotes (' ') instead of double quotes (" ").
-    - require_trailing_commas # Require trailing commas in multi-line parameter lists.
+    # ========================================
+    # ERROR PREVENTION & SAFETY
+    # ========================================
+    avoid_print: true
+    avoid_web_libraries_in_flutter: true
+    cancel_subscriptions: true
+    close_sinks: true
+    iterable_contains_unrelated_type: true
+    list_remove_unrelated_type: true
+    no_duplicate_case_values: true
+    throw_in_finally: true
+    unnecessary_null_checks: true
+    unnecessary_null_in_if_null_operators: true
+    use_build_context_synchronously: true
+    valid_regexps: true
+
+    # ========================================
+    # STYLE & FORMATTING
+    # ========================================
+    prefer_single_quotes: true
+    require_trailing_commas: true
+    sort_child_properties_last: true
+    sort_constructors_first: true
+    sort_pub_dependencies: true
+    sort_unnamed_constructors_first: true
+    always_put_control_body_on_new_line: true
+    always_put_required_named_parameters_first: true
+    directives_ordering: true
     
-    # Style and readability
-    - prefer_const_constructors # Use const constructors when possible.
-    - prefer_const_literals_to_create_immutables # Use const for immutable collections (e.g., List, Map).
-    - prefer_final_fields # Use final for fields that are not reassigned.
-    - annotate_overrides # Always annotate overridden methods with @override.
-    - prefer_interpolation_to_compose_strings # Use string interpolation instead of concatenation.
-    - avoid_positional_boolean_parameters # Avoid positional boolean parameters; use named ones instead.
-    - sort_child_properties_last # Place the child property last in widget constructors for better readability.
-    - always_put_control_body_on_new_line # Place the body of control structures (if, for, etc.) on a new line.
-    - always_put_required_named_parameters_first # Place required named parameters before optional ones.
-
-    # Performance rules
-    - avoid_unnecessary_containers # Avoid using Containers when they are unnecessary.
-    - use_key_in_widget_constructors # Add a Key to constructors of custom widgets.
-
-    # Best practices
-    - avoid_field_initializers_in_const_classes # Avoid initializing fields in const classes.
-    - prefer_asserts_in_initializer_lists # Use asserts in constructor initializer lists for validation.
-    - no_logic_in_create_state # Avoid adding logic inside the createState method of StatefulWidget.
-    - type_init_formals # Use type annotations for constructor initializers.
-
-    # Safety and error prevention
-    - avoid_returning_null # Avoid returning null; prefer nullable types or alternatives.
-    - avoid_void_async # Avoid using async functions that return void.
-    - unnecessary_null_checks # Avoid unnecessary null checks on non-nullable variables.
-    - avoid_redundant_argument_values # Avoid passing redundant default values to arguments.
-    - iterable_contains_unrelated_type # Ensure contains() checks are type-safe.
-
-    # Code organization and cleanliness
-    - avoid_classes_with_only_static_members # Avoid creating classes with only static members.
-    - camel_case_extensions # Use camelCase naming for extension methods.
-    - join_return_with_assignment # Combine return statements with assignments when possible.
-    - avoid_setters_without_getters # Avoid creating setters without corresponding getters.
+    # ========================================
+    # CONST & IMMUTABILITY
+    # ========================================
+    prefer_const_constructors: true
+    prefer_const_constructors_in_immutables: true
+    prefer_const_declarations: true
+    prefer_const_literals_to_create_immutables: true
+    unnecessary_const: true
+    avoid_unnecessary_containers: true
+    
+    # ========================================
+    # VARIABLE DECLARATIONS
+    # ========================================
+    prefer_final_fields: true
+    prefer_final_in_for_each: true
+    prefer_final_locals: true
+    prefer_final_parameters: false
+    prefer_typing_uninitialized_variables: true
+    type_annotate_public_apis: true
+    always_specify_types: true 
+  
+    # ========================================
+    # FUNCTIONS & METHODS
+    # ========================================
+    annotate_overrides: true
+    avoid_void_async: true
+    prefer_expression_function_bodies: true
+    prefer_function_declarations_over_variables: true
+    use_function_type_syntax_for_parameters: true
+    avoid_returning_null_for_future: true
+    avoid_returning_null_for_void: true
+    
+    # ========================================
+    # CLASSES & CONSTRUCTORS
+    # ========================================
+    avoid_classes_with_only_static_members: true
+    avoid_field_initializers_in_const_classes: true
+    prefer_constructors_over_static_methods: true
+    use_super_parameters: true
+    
+    # ========================================
+    # STRING & INTERPOLATION
+    # ========================================
+    prefer_interpolation_to_compose_strings: true
+    prefer_adjacent_string_concatenation: true
+    use_raw_strings: true
+    unnecessary_string_interpolations: true
+    
+    # ========================================
+    # COLLECTIONS & ITERABLES
+    # ========================================
+    prefer_collection_literals: true
+    prefer_spread_collections: true
+    prefer_for_elements_to_map_fromIterable: true
+    prefer_is_empty: true
+    prefer_is_not_empty: true
+    prefer_contains: true
+    prefer_iterable_whereType: true
+    
+    # ========================================
+    # NULL SAFETY
+    # ========================================
+    prefer_if_null_operators: true
+    prefer_null_aware_operators: true
+    prefer_null_aware_method_calls: true
+    unnecessary_null_aware_assignments: true
+    
+    # ========================================
+    # BOOLEAN & CONDITIONALS
+    # ========================================
+    avoid_bool_literals_in_conditional_expressions: true
+    avoid_positional_boolean_parameters: true
+    prefer_is_not_operator: true
+    
+    # ========================================
+    # WIDGET SPECIFIC (FLUTTER)
+    # ========================================
+    use_key_in_widget_constructors: true
+    use_colored_box: true
+    use_decorated_box: true
+    sized_box_for_whitespace: true
+    sized_box_shrink_expand: true
+    
+    # ========================================
+    # PERFORMANCE & OPTIMIZATION
+    # ========================================
+    avoid_slow_async_io: true
+    no_logic_in_create_state: true
+    
+    # ========================================
+    # DOCUMENTATION
+    # ========================================
+    public_member_api_docs: false # Set to true for libraries
+    slash_for_doc_comments: true
+    
+    # ========================================
+    # MISCELLANEOUS
+    # ========================================
+    avoid_catches_without_on_clauses: true
+    avoid_catching_errors: true
+    avoid_double_and_int_checks: true
+    avoid_equals_and_hash_code_on_mutable_classes: true
+    avoid_multiple_declarations_per_line: true
+    avoid_redundant_argument_values: true
+    avoid_relative_lib_imports: true
+    avoid_setters_without_getters: true
+    avoid_single_cascade_in_expression_statements: true
+    avoid_unused_constructor_parameters: true
+    camel_case_extensions: true
+    camel_case_types: true
+    constant_identifier_names: true
+    file_names: true
+    join_return_with_assignment: true
+    library_names: true
+    non_constant_identifier_names: true
+    package_names: true
+    prefer_asserts_in_initializer_lists: true
+    prefer_asserts_with_message: true
+    prefer_generic_function_type_aliases: true
+    prefer_if_elements_to_conditional_expressions: true
+    prefer_initializing_formals: true
+    prefer_inlined_adds: true
+    prefer_int_literals: true
+    prefer_mixin: true
+    prefer_relative_imports: true
+    recursive_getters: true
+    unawaited_futures: true
+    unnecessary_await_in_return: true
+    unnecessary_brace_in_string_interps: true
+    unnecessary_getters_setters: true
+    unnecessary_lambdas: true
+    unnecessary_new: true
+    unnecessary_overrides: true
+    unnecessary_parenthesis: true
+    unnecessary_raw_strings: true
+    unnecessary_statements: true
+    unnecessary_this: true
+    use_enums: true
+    use_if_null_to_convert_nulls_to_bools: true
+    use_is_even_rather_than_modulo: true
+    use_late_for_private_fields_and_variables: true
+    use_named_constants: true
+    use_rethrow_when_possible: true
+    use_setters_to_change_properties: true
+    use_string_buffers: true
+    use_test_throws_matchers: true
+    use_to_and_as_if_applicable: true

@@ -1,8 +1,6 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 //#1 Hello World
 import 'dart:convert';
-import 'dart:developer' show log;
-import 'dart:math' hide log;
-import 'dart:math' as math;
 
 class HelloWorld {
   String hello() => 'Hello, World!';
@@ -19,8 +17,8 @@ class Leap {
 
 //#4 Scrabble Score
 int score(String word) {
-  var score = 0;
-  for (String letter in word.toLowerCase().split('')) {
+  int score = 0;
+  for (final String letter in word.toLowerCase().split('')) {
     switch (letter) {
       case 'a':
       case 'e':
@@ -70,27 +68,27 @@ int score(String word) {
 //#5 Atbash Cipher
 class AtbashCipher {
   String encode(String text) {
-    AsciiCodec asciiCodec = const AsciiCodec();
-    List<int> resultCode = const AsciiCodec()
-        .encode(text.toLowerCase().replaceAll(RegExp(r'[ .,]'), ''))
-        .map((number) {
+    const AsciiCodec asciiCodec = AsciiCodec();
+    final List<int> resultCode = const AsciiCodec()
+        .encode(text.toLowerCase().replaceAll(RegExp('[ .,]'), ''))
+        .map((int number) {
       if (number >= 97 && number <= 122) {
         return 122 - number + 97;
       } else {
         return number;
       }
     }).toList();
-    return RegExp(r'.{1,5}')
+    return RegExp('.{1,5}')
         .allMatches(asciiCodec.decode(resultCode))
-        .map((match) => match.group(0))
+        .map((RegExpMatch match) => match.group(0))
         .toList()
         .join(' ');
   }
 
   String decode(String text) {
-    AsciiCodec asciiCodec = const AsciiCodec();
-    List<int> resultCode =
-        const AsciiCodec().encode(text.replaceAll(' ', '')).map((number) {
+    const AsciiCodec asciiCodec = AsciiCodec();
+    final List<int> resultCode =
+        const AsciiCodec().encode(text.replaceAll(' ', '')).map((int number) {
       if (number >= 97 && number <= 122) {
         return 122 - number + 97;
       } else {
@@ -109,14 +107,14 @@ class EggCounter {
 //#7 ETL
 class Etl {
   Map<String, int> transform(Map<String, List<String>> legacy) {
-    final Map<String, int> result = {};
+    final Map<String, int> result = <String, int>{};
 
     int points = 0;
 
-    for (String key in legacy.keys) {
+    for (final String key in legacy.keys) {
       points = int.parse(key);
-      for (String value in legacy[key]!) {
-        result.addAll({value.toLowerCase(): points});
+      for (final String value in legacy[key]!) {
+        result.addAll(<String, int>{value.toLowerCase(): points});
       }
     }
 
@@ -126,7 +124,7 @@ class Etl {
 
 //#8 Armstrong Numbers
 class ArmstrongNumbers {
-bool isArmstrongNumber(String number) {
+  bool isArmstrongNumber(String number) {
     final digits = number.split('');
     final length = digits.length;
     BigInt sum = BigInt.zero;
@@ -137,5 +135,64 @@ bool isArmstrongNumber(String number) {
     }
 
     return sum.toString() == number;
+  }
+}
+
+//#9 Binary
+class GameOfLife {
+  GameOfLife(this.input);
+
+  final List<List<int>> input;
+  final List<List<int>> output = <List<int>>[];
+
+  static const int dead = 0;
+  static const int alive = 1;
+
+
+  void tick() {
+    for (int i = 0; i < input.length; i++) {
+      final List<int> row = <int>[];
+      for (int j = 0; j < input[i].length; j++) {
+        final int neighbors = _sumOfNeighbors(input, i, j);
+        if (input[i][j] == alive && neighbors < 2) {
+          row.add(dead);
+        } else if (input[i][j] == alive && neighbors > 3) {
+          row.add(dead);
+        } else if (input[i][j] == dead && neighbors == 3) {
+          row.add(alive);
+        } else {
+          row.add(input[i][j]);
+        }
+      }
+      output.add(row);
+    }
+  }
+
+  List<List<int>> matrix() => output;
+
+  int _sumOfNeighbors(List<List<int>> matrix, int row, int col) {
+    int sum = 0;
+    final int numRows = matrix.length;
+    final int numCols = matrix[0].length;
+
+    for (int i = -1; i <= 1; i++) {
+      for (int j = -1; j <= 1; j++) {
+        if (i == 0 && j == 0) {
+          continue;
+        }
+
+        final int newRow = row + i;
+        final int newCol = col + j;
+
+        if (newRow >= 0 &&
+            newRow < numRows &&
+            newCol >= 0 &&
+            newCol < numCols) {
+          sum += matrix[newRow][newCol];
+        }
+      }
+    }
+
+    return sum;
   }
 }
