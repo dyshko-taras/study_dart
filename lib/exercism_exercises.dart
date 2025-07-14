@@ -1,6 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 //#1 Hello World
 import 'dart:convert';
+import 'dart:developer' show log;
+import 'dart:math' show min;
 
 class HelloWorld {
   String hello() => 'Hello, World!';
@@ -125,12 +127,12 @@ class Etl {
 //#8 Armstrong Numbers
 class ArmstrongNumbers {
   bool isArmstrongNumber(String number) {
-    final digits = number.split('');
-    final length = digits.length;
+    final List<String> digits = number.split('');
+    final int length = digits.length;
     BigInt sum = BigInt.zero;
 
-    for (var d in digits) {
-      final value = BigInt.from(int.parse(d));
+    for (final String d in digits) {
+      final BigInt value = BigInt.from(int.parse(d));
       sum += value.pow(length);
     }
 
@@ -147,7 +149,6 @@ class GameOfLife {
 
   static const int dead = 0;
   static const int alive = 1;
-
 
   void tick() {
     for (int i = 0; i < input.length; i++) {
@@ -194,5 +195,27 @@ class GameOfLife {
     }
 
     return sum;
+  }
+}
+
+//#10 High Scores
+class HighScores {
+  HighScores(this.scores);
+
+  final List<int> scores;
+  List<int> scores2 = [];
+
+  int latest() => scores.last;
+
+  int personalBest() {
+    scores2 = List.from(scores);
+    scores2.sort();
+    return scores2.last;
+  }
+
+  List<int> personalTopThree() {
+    scores2 = List.from(scores);
+    scores2.sort((a, b) => b.compareTo(a));
+    return scores2.sublist(0, min(3, scores2.length));
   }
 }

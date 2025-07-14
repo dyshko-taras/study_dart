@@ -1,5 +1,10 @@
+import 'dart:developer' show log;
+
 import 'package:dart_study/exercism_exercises.dart';
 
 void main() {
-  ArmstrongNumbers().isArmstrongNumber('186709961001538790100634132976990');
+  final scores =
+      HighScores(<int>[10, 30, 90, 30, 100, 20, 10, 0, 30, 40, 40, 70, 70]);
+  log('\n');
+  log(scores.personalTopThree().toString());
 }
