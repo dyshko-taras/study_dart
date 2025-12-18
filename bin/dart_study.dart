@@ -1,10 +1,6 @@
-import 'dart:developer' show log;
-
-import 'package:dart_study/exercism_exercises.dart';
+import 'dart:developer' as dev;
 
 void main() {
-  final scores =
-      HighScores(<int>[10, 30, 90, 30, 100, 20, 10, 0, 30, 40, 40, 70, 70]);
-  log('\n');
-  log(scores.personalTopThree().toString());
+  dev.log('1');
+  print('2');
 }
