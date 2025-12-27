@@ -1,23 +1,64 @@
-// See https://pub.dartlang.org/packages/test
-import 'package:dart_study/ex11_remove_first_and_last_char.dart';
+import 'package:dart_study/ex13_the_office_2.dart';
 import 'package:test/test.dart';
 
 void main() {
-  group('Fixed tests', () {
-    test("'' => Null", () {
-      expect(array(''), equals(Null));
-    });
-    test("'1' => Null", () {
-      expect(array('1'), equals(Null));
-    });
-    test("'1, 3' => Null", () {
-      expect(array('1, 3'), equals(Null));
-    });
-    test("'1,2,3' => '2'", () {
-      expect(array('1,2,3'), equals('2'));
-    });
-    test("'1,2,3,4' => '2 3'", () {
-      expect(array('1,2,3,4'), equals('2 3'));
-    });
+  group('Basic tests', () {
+    void doTest(Map<String, String> staff, String expected) {
+      test(
+        'Testing for $staff',
+        () => expect(boredom(Map.unmodifiable(staff)), equals(expected)),
+      );
+    }
+
+    doTest(
+      {
+        'tim': 'change',
+        'jim': 'accounts',
+        'randy': 'canteen',
+        'sandy': 'change',
+        'andy': 'change',
+        'katie': 'IS',
+        'laura': 'change',
+        'saajid': 'IS',
+        'alex': 'trading',
+        'john': 'accounts',
+        'mr': 'finance',
+      },
+      'kill me now',
+    );
+
+    doTest(
+      {
+        'tim': 'IS',
+        'jim': 'finance',
+        'randy': 'pissing about',
+        'sandy': 'cleaning',
+        'andy': 'cleaning',
+        'katie': 'cleaning',
+        'laura': 'pissing about',
+        'saajid': 'regulation',
+        'alex': 'regulation',
+        'john': 'accounts',
+        'mr': 'canteen',
+      },
+      'i can handle this',
+    );
+
+    doTest(
+      {
+        'tim': 'accounts',
+        'jim': 'accounts',
+        'randy': 'pissing about',
+        'sandy': 'finance',
+        'andy': 'change',
+        'katie': 'IS',
+        'laura': 'IS',
+        'saajid': 'canteen',
+        'alex': 'pissing about',
+        'john': 'retail',
+        'mr': 'pissing about',
+      },
+      'party time!!',
+    );
   });
 }
