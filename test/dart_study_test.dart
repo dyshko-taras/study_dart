@@ -1,64 +1,68 @@
-import 'package:dart_study/ex13_the_office_2.dart';
+import 'package:dart_study/ex14_the_office_1.dart';
 import 'package:test/test.dart';
 
 void main() {
-  group('Basic tests', () {
-    void doTest(Map<String, String> staff, String expected) {
-      test(
-        'Testing for $staff',
-        () => expect(boredom(Map.unmodifiable(staff)), equals(expected)),
+  void doTest(Map<String, int> meet, String boss, String expected) {
+    test('Test', () {
+      expect(
+        outed(Map.unmodifiable(meet), boss),
+        equals(expected),
+        reason: 'meet = $meet\nboss = $boss',
       );
-    }
+    });
+  }
 
+  group('Example tests', () {
     doTest(
       {
-        'tim': 'change',
-        'jim': 'accounts',
-        'randy': 'canteen',
-        'sandy': 'change',
-        'andy': 'change',
-        'katie': 'IS',
-        'laura': 'change',
-        'saajid': 'IS',
-        'alex': 'trading',
-        'john': 'accounts',
-        'mr': 'finance',
+        'tim': 0,
+        'jim': 2,
+        'randy': 0,
+        'sandy': 7,
+        'andy': 0,
+        'katie': 5,
+        'laura': 1,
+        'saajid': 2,
+        'alex': 3,
+        'john': 2,
+        'mr': 0,
       },
-      'kill me now',
+      'laura',
+      'Get Out Now!',
     );
-
     doTest(
       {
-        'tim': 'IS',
-        'jim': 'finance',
-        'randy': 'pissing about',
-        'sandy': 'cleaning',
-        'andy': 'cleaning',
-        'katie': 'cleaning',
-        'laura': 'pissing about',
-        'saajid': 'regulation',
-        'alex': 'regulation',
-        'john': 'accounts',
-        'mr': 'canteen',
+        'tim': 1,
+        'jim': 3,
+        'randy': 9,
+        'sandy': 6,
+        'andy': 7,
+        'katie': 6,
+        'laura': 9,
+        'saajid': 9,
+        'alex': 9,
+        'john': 9,
+        'mr': 8,
       },
-      'i can handle this',
+      'katie',
+      'Nice Work Champ!',
     );
-
     doTest(
       {
-        'tim': 'accounts',
-        'jim': 'accounts',
-        'randy': 'pissing about',
-        'sandy': 'finance',
-        'andy': 'change',
-        'katie': 'IS',
-        'laura': 'IS',
-        'saajid': 'canteen',
-        'alex': 'pissing about',
-        'john': 'retail',
-        'mr': 'pissing about',
+        'tim': 2,
+        'jim': 4,
+        'randy': 0,
+        'sandy': 5,
+        'andy': 8,
+        'katie': 6,
+        'laura': 2,
+        'saajid': 2,
+        'alex': 3,
+        'john': 2,
+        'mr': 8,
       },
-      'party time!!',
+      'john',
+      'Get Out Now!',
     );
   });
 }
