@@ -1,68 +1,25 @@
-import 'package:dart_study/ex14_the_office_1.dart';
+import 'package:dart_study/ex16_strong_number.dart';
 import 'package:test/test.dart';
 
 void main() {
-  void doTest(Map<String, int> meet, String boss, String expected) {
-    test('Test', () {
-      expect(
-        outed(Map.unmodifiable(meet), boss),
-        equals(expected),
-        reason: 'meet = $meet\nboss = $boss',
-      );
+  group('Fixed tests', () {
+    test('Testing for 1', () {
+      expect(strong(1), equals('STRONG!!!!'));
     });
-  }
-
-  group('Example tests', () {
-    doTest(
-      {
-        'tim': 0,
-        'jim': 2,
-        'randy': 0,
-        'sandy': 7,
-        'andy': 0,
-        'katie': 5,
-        'laura': 1,
-        'saajid': 2,
-        'alex': 3,
-        'john': 2,
-        'mr': 0,
-      },
-      'laura',
-      'Get Out Now!',
-    );
-    doTest(
-      {
-        'tim': 1,
-        'jim': 3,
-        'randy': 9,
-        'sandy': 6,
-        'andy': 7,
-        'katie': 6,
-        'laura': 9,
-        'saajid': 9,
-        'alex': 9,
-        'john': 9,
-        'mr': 8,
-      },
-      'katie',
-      'Nice Work Champ!',
-    );
-    doTest(
-      {
-        'tim': 2,
-        'jim': 4,
-        'randy': 0,
-        'sandy': 5,
-        'andy': 8,
-        'katie': 6,
-        'laura': 2,
-        'saajid': 2,
-        'alex': 3,
-        'john': 2,
-        'mr': 8,
-      },
-      'john',
-      'Get Out Now!',
-    );
+    test('Testing for 2', () {
+      expect(strong(2), equals('STRONG!!!!'));
+    });
+    test('Testing for 145', () {
+      expect(strong(145), equals('STRONG!!!!'));
+    });
+    test('Testing for 7', () {
+      expect(strong(7), equals('Not Strong !!'));
+    });
+    test('Testing for 93', () {
+      expect(strong(93), equals('Not Strong !!'));
+    });
+    test('Testing for 185', () {
+      expect(strong(185), equals('Not Strong !!'));
+    });
   });
 }
