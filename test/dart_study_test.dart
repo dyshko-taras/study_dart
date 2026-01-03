@@ -1,25 +1,22 @@
-import 'package:dart_study/ex16_strong_number.dart';
+import 'package:dart_study/ex17_nth_smallest_element.dart';
 import 'package:test/test.dart';
 
 void main() {
   group('Fixed tests', () {
-    test('Testing for 1', () {
-      expect(strong(1), equals('STRONG!!!!'));
+    test('nthSmallest([3, 1, 2], 2)', () {
+      expect(nthSmallest([3, 1, 2], 2), equals(2));
     });
-    test('Testing for 2', () {
-      expect(strong(2), equals('STRONG!!!!'));
+    test('nthSmallest([15, 20, 7, 10, 4, 3], 3)', () {
+      expect(nthSmallest([15, 20, 7, 10, 4, 3], 3), equals(7));
     });
-    test('Testing for 145', () {
-      expect(strong(145), equals('STRONG!!!!'));
+    test('nthSmallest([-5, -1, -6, -18], 4)', () {
+      expect(nthSmallest([-5, -1, -6, -18], 4), equals(-1));
     });
-    test('Testing for 7', () {
-      expect(strong(7), equals('Not Strong !!'));
+    test('nthSmallest([-102, -16, -1, -2, -367, -9], 5)', () {
+      expect(nthSmallest([-102, -16, -1, -2, -367, -9], 5), equals(-2));
     });
-    test('Testing for 93', () {
-      expect(strong(93), equals('Not Strong !!'));
-    });
-    test('Testing for 185', () {
-      expect(strong(185), equals('Not Strong !!'));
+    test('nthSmallest([2, 169, 13, -5, 0, -1], 4)', () {
+      expect(nthSmallest([2, 169, 13, -5, 0, -1], 4), equals(2));
     });
   });
 }
