@@ -1,46 +1,25 @@
-import 'package:dart_study/ex19_maximum_product.dart';
+import 'package:dart_study/ex20_product_array.dart';
 import 'package:test/test.dart';
 
 void main() {
   group('Fixed tests', () {
-    test('Testing for [5, 8]', () {
-      expect(adjacentElementsProduct([5, 8]), equals(40));
+    test('Testing for [12, 20]', () {
+      expect(productArray([12, 20]), equals([20, 12]));
     });
-    test('Testing for [1, 2, 3]', () {
-      expect(adjacentElementsProduct([1, 2, 3]), equals(6));
+    test('Testing for [3, 27, 4, 2]', () {
+      expect(productArray([3, 27, 4, 2]), equals([216, 24, 162, 324]));
     });
-    test('Testing for [1, 5, 10, 9]', () {
-      expect(adjacentElementsProduct([1, 5, 10, 9]), equals(90));
-    });
-    test('Testing for [4, 12, 3, 1, 5]', () {
-      expect(adjacentElementsProduct([4, 12, 3, 1, 5]), equals(48));
-    });
-    test('Testing for [5, 1, 2, 3, 1, 4]', () {
-      expect(adjacentElementsProduct([5, 1, 2, 3, 1, 4]), equals(6));
-    });
-    test('Testing for [3, 6, -2, -5, 7, 3]', () {
-      expect(adjacentElementsProduct([3, 6, -2, -5, 7, 3]), equals(21));
-    });
-    test('Testing for [9, 5, 10, 2, 24, -1, -48]', () {
-      expect(adjacentElementsProduct([9, 5, 10, 2, 24, -1, -48]), equals(50));
-    });
-    test('Testing for [5, 6, -4, 2, 3, 2, -23]', () {
-      expect(adjacentElementsProduct([5, 6, -4, 2, 3, 2, -23]), equals(30));
-    });
-    test('Testing for [-23, 4, -5, 99, -27, 329, -2, 7, -921]', () {
+    test('Testing for [13, 10, 5, 2, 9]', () {
       expect(
-        adjacentElementsProduct([-23, 4, -5, 99, -27, 329, -2, 7, -921]),
-        equals(-14),
+        productArray([13, 10, 5, 2, 9]),
+        equals([900, 1170, 2340, 5850, 1300]),
       );
     });
-    test('Testing for [5, 1, 2, 3, 1, 4]', () {
-      expect(adjacentElementsProduct([5, 1, 2, 3, 1, 4]), equals(6));
-    });
-    test('Testing for [1, 0, 1, 0, 1000]', () {
-      expect(adjacentElementsProduct([1, 0, 1, 0, 1000]), equals(0));
-    });
-    test('Testing for [1, 2, 3, 0]', () {
-      expect(adjacentElementsProduct([1, 2, 3, 0]), equals(6));
+    test('Testing for [16, 17, 4, 3, 5, 2]', () {
+      expect(
+        productArray([16, 17, 4, 3, 5, 2]),
+        equals([2040, 1920, 8160, 10880, 6528, 16320]),
+      );
     });
   });
 }
