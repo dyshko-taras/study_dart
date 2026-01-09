@@ -1,7 +1,7 @@
 import 'dart:developer' as dev;
 
-import 'package:dart_study/ex16_strong_number.dart';
+import 'package:dart_study/ex21_string_prefix_suffix.dart';
 
 void main() {
-  dev.log(strong(145));
+  dev.log(solve('abcdabc').toString());
 }

@@ -1,25 +1,43 @@
-import 'package:dart_study/ex20_product_array.dart';
+import 'package:dart_study/ex21_string_prefix_suffix.dart';
 import 'package:test/test.dart';
 
 void main() {
   group('Fixed tests', () {
-    test('Testing for [12, 20]', () {
-      expect(productArray([12, 20]), equals([20, 12]));
+    test('Testing for abcd', () {
+      expect(solve('abcd'), equals(0));
     });
-    test('Testing for [3, 27, 4, 2]', () {
-      expect(productArray([3, 27, 4, 2]), equals([216, 24, 162, 324]));
+    test('Testing for abcda', () {
+      expect(solve('abcda'), equals(1));
     });
-    test('Testing for [13, 10, 5, 2, 9]', () {
-      expect(
-        productArray([13, 10, 5, 2, 9]),
-        equals([900, 1170, 2340, 5850, 1300]),
-      );
+    test('Testing for abcdabc', () {
+      expect(solve('abcdabc'), equals(3));
     });
-    test('Testing for [16, 17, 4, 3, 5, 2]', () {
-      expect(
-        productArray([16, 17, 4, 3, 5, 2]),
-        equals([2040, 1920, 8160, 10880, 6528, 16320]),
-      );
+    test('Testing for abcabc', () {
+      expect(solve('abcabc'), equals(3));
+    });
+    test('Testing for abcabca', () {
+      expect(solve('abcabca'), equals(1));
+    });
+    test('Testing for abcdabcc', () {
+      expect(solve('abcdabcc'), equals(0));
+    });
+    test('Testing for aaaaa', () {
+      expect(solve('aaaaa'), equals(2));
+    });
+    test('Testing for aaaa', () {
+      expect(solve('aaaa'), equals(2));
+    });
+    test('Testing for aaa', () {
+      expect(solve('aaa'), equals(1));
+    });
+    test('Testing for aa', () {
+      expect(solve('aa'), equals(1));
+    });
+    test('Testing for a', () {
+      expect(solve('a'), equals(0));
+    });
+    test('Testing for acbacc', () {
+      expect(solve('acbacc'), equals(0));
     });
   });
 }
