@@ -1,43 +1,28 @@
-import 'package:dart_study/ex21_string_prefix_suffix.dart';
+import 'package:dart_study/ex22_sum_two_lowest_int.dart';
 import 'package:test/test.dart';
 
 void main() {
   group('Fixed tests', () {
-    test('Testing for abcd', () {
-      expect(solve('abcd'), equals(0));
+    test('[10, 343445353, 3453445, 3453545353453] --> 3453455', () {
+      expect(
+        sumTwoSmallestNumbers([10, 343445353, 3453445, 3453545353453]),
+        equals(3453455),
+      );
     });
-    test('Testing for abcda', () {
-      expect(solve('abcda'), equals(1));
+    test('[5, 8, 12, 18, 22] --> 13', () {
+      expect(sumTwoSmallestNumbers([5, 8, 12, 18, 22]), equals(13));
     });
-    test('Testing for abcdabc', () {
-      expect(solve('abcdabc'), equals(3));
+    test('[7, 15, 12, 18, 22] --> 19', () {
+      expect(sumTwoSmallestNumbers([7, 15, 12, 18, 22]), equals(19));
     });
-    test('Testing for abcabc', () {
-      expect(solve('abcabc'), equals(3));
+    test('[25, 42, 12, 18, 22] --> 30', () {
+      expect(sumTwoSmallestNumbers([25, 42, 12, 18, 22]), equals(30));
     });
-    test('Testing for abcabca', () {
-      expect(solve('abcabca'), equals(1));
+    test('[1, 8, 12, 18, 5] --> 6', () {
+      expect(sumTwoSmallestNumbers([1, 8, 12, 18, 5]), equals(6));
     });
-    test('Testing for abcdabcc', () {
-      expect(solve('abcdabcc'), equals(0));
-    });
-    test('Testing for aaaaa', () {
-      expect(solve('aaaaa'), equals(2));
-    });
-    test('Testing for aaaa', () {
-      expect(solve('aaaa'), equals(2));
-    });
-    test('Testing for aaa', () {
-      expect(solve('aaa'), equals(1));
-    });
-    test('Testing for aa', () {
-      expect(solve('aa'), equals(1));
-    });
-    test('Testing for a', () {
-      expect(solve('a'), equals(0));
-    });
-    test('Testing for acbacc', () {
-      expect(solve('acbacc'), equals(0));
+    test('[13, 12, 5, 61, 22] --> 17', () {
+      expect(sumTwoSmallestNumbers([13, 12, 5, 61, 22]), equals(17));
     });
   });
 }
