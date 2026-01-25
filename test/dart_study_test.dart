@@ -1,26 +1,19 @@
-import 'package:dart_study/ex24_rock_pager_scissors.dart';
+import 'package:dart_study/ex27_simple_string_char.dart';
 import 'package:test/test.dart';
 
 void main() {
-  void doTest(String pl1, String pl2, String expected) {
-    test('$pl1 vs $pl2', () => expect(rpsls(pl1, pl2), equals(expected)));
-  }
-
-  group('Player 1 wins', () {
-    doTest('rock', 'lizard', 'Player 1 Won!');
-    doTest('scissors', 'lizard', 'Player 1 Won!');
-    doTest('spock', 'rock', 'Player 1 Won!');
-  });
-
-  group('Player 2 wins', () {
-    doTest('lizard', 'scissors', 'Player 2 Won!');
-    doTest('scissors', 'spock', 'Player 2 Won!');
-    doTest('rock', 'spock', 'Player 2 Won!');
-  });
-
-  group('Draw!', () {
-    doTest('lizard', 'lizard', 'Draw!');
-    doTest('spock', 'spock', 'Draw!');
-    doTest('rock', 'rock', 'Draw!');
+  group('Basic tests', () {
+    final tests = [
+      ('Codewars@codewars123.com', [1, 18, 3, 2]),
+      (r'P*K4%>mQUDaG$h=cx2?.Czt7!Zn16p@5H', [9, 9, 6, 9]),
+      ("RYT'>s&gO-.CM9AKeH?,5317tWGpS<*x2ukXZD", [15, 8, 6, 9]),
+      (r'$Cnl)Sr<7bBW-&qLHI!mY41ODe', [10, 7, 3, 6]),
+      (r'@mw>0=QD-iAx!rp9TaG?o&M%l$34L.nbft', [7, 13, 4, 10]),
+    ];
+    for (final (s, expected) in tests) {
+      test('Testing for "$s"', () {
+        expect(solve(s), equals(expected));
+      });
+    }
   });
 }
