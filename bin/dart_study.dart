@@ -1,7 +1,6 @@
-import 'dart:developer' as dev;
-
-import 'package:dart_study/ex21_string_prefix_suffix.dart';
+import 'package:dart_study/ex28_balanced_number.dart';
 
 void main() {
-  dev.log(solve('abcdabc').toString());
+  balancedNum(123);
+  balancedNum(1234);
 }
