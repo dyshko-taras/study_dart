@@ -1,4 +1,4 @@
-import 'package:dart_study/ex27_simple_string_char.dart';
+import 'package:dart_study/1-30/ex27_simple_string_char.dart';
 import 'package:test/test.dart';
 
 void main() {
