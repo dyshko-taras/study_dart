@@ -1,6 +1,5 @@
-import 'package:dart_study/1-30/ex28_balanced_number.dart';
+import 'package:dart_study/31-60/ex37_indexed_capitalization.dart';
 
 void main() {
-  balancedNum(123);
-  balancedNum(1234);
+  capitalize('abcdef', [1, 3, 5]);
 }
