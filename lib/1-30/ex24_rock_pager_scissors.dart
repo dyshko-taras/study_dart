@@ -8,8 +8,9 @@ String rpsls(String pl1, String pl2) {
     'spock': 4,
   };
   if (elements[pl2] == ((elements[pl1]! + 1) % 5) ||
-      elements[pl2] == ((elements[pl1]! + 3) % 5))
+      elements[pl2] == ((elements[pl1]! + 3) % 5)) {
     return 'Player 1 Won!';
-  else
+  } else {
     return 'Player 2 Won!';
+  }
 }
